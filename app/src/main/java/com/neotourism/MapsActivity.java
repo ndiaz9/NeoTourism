@@ -15,6 +15,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -23,10 +25,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     private GoogleMap mMap;
     private Marker mLapola;
+    private Marker mBolivar;
     private Button butobservar;
-    private ImageView imgLapola;
-    private TextView txtLapola;
-
+    private ImageView img;
+    private TextView txt;
+    private String currentMarker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +39,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         butobservar = (Button) findViewById(R.id.buttonObservar);
-        imgLapola = (ImageView) findViewById(R.id.imageView1);
-        txtLapola = (TextView) findViewById(R.id.textView1);
+        img = (ImageView) findViewById(R.id.imageView1);
+        txt = (TextView) findViewById(R.id.textView1);
+        currentMarker = "";
     }
 
 
@@ -55,29 +59,56 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         mMap = googleMap;
 
         LatLng lapola = new LatLng(4.601639, -74.067687);
-        mLapola = mMap.addMarker(new MarkerOptions().position(lapola).title("Monumento La Pola"));
+        LatLng bolivar = new LatLng(4.601211, -74.069221);
+        mLapola = mMap.addMarker(new MarkerOptions().position(lapola).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+        mBolivar = mMap.addMarker(new MarkerOptions().position(bolivar).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+        mLapola.setTag("Pola");
+        mBolivar.setTag("Bolivar");
         mMap.setOnMarkerClickListener(this);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lapola,16));
     }
     /** Called when the user clicks a marker. */
     @Override
     public boolean onMarkerClick(final Marker marker) {
-        if(imgLapola.getVisibility() == View.VISIBLE){
-            butobservar.setVisibility(View.INVISIBLE);
-            imgLapola.setVisibility(View.INVISIBLE);
-            txtLapola.setVisibility(View.INVISIBLE);
-        }else{
-            butobservar.setVisibility(View.VISIBLE);
-            imgLapola.setVisibility(View.VISIBLE);
-            txtLapola.setVisibility(View.VISIBLE);
+        if(marker.getTag().toString().equals(currentMarker)){
+            switchVisibility();
         }
-        // Return false to indicate that we have not consumed the event and that we wish
-        // for the default behavior to occur (which is for the camera to move such that the
-        // marker is centered and for the marker's info window to open, if it has one).
+        else{
+            setResources(marker);
+            butobservar.setVisibility(View.VISIBLE);
+            img.setVisibility(View.VISIBLE);
+            txt.setVisibility(View.VISIBLE);
+        }
+        currentMarker = marker.getTag().toString();
         return false;
     }
 
+    public void setResources(Marker marker){
+        String tag = (String) marker.getTag();
+        if (tag.equals("Pola")){
+            img.setImageResource(R.drawable.lapola);
+            txt.setText("La Pola");
+        }
+        else if(tag.equals("Bolivar")){
+            img.setImageResource(R.drawable.templetebolivar);
+            txt.setText("Templete Bolívar");
+        }
+    }
+
+    public void switchVisibility(){
+        if(img.getVisibility() == View.VISIBLE){
+            butobservar.setVisibility(View.INVISIBLE);
+            img.setVisibility(View.INVISIBLE);
+            txt.setVisibility(View.INVISIBLE);
+        }else{
+            butobservar.setVisibility(View.VISIBLE);
+            img.setVisibility(View.VISIBLE);
+            txt.setVisibility(View.VISIBLE);
+        }
+    }
+
     public void onClickObservar(View view){
-        Toast.makeText(this, "I've been summoned.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, CamActivity.class);
+        startActivity(intent);
     }
 }
