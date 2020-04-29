@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">NeoTourism</string>
     <string name="title_activity_maps">Map</string>
-    <string name="button_observar">Observar</string>
+    <string name="button_moreinfo">Más Información</string>
     <string name="text_lapola">La Pola</string>
+    <string name="text_bolivar">Templete Bolívar</string>
     <string name="text_img">Image</string>
+    <string name="text_desc">No hay una descripción disponible. Intentalo más tarde.</string>
+    <string name="text_titulo">Sin título</string>
+    <string name="desc_lapola">En Bogotá, en la Plazuela de Las Aguas (carrera 3a con calle 18), se encuentra una escultura de Policarpa Salavarrieta realizada por Dionisio Cortés. Fue instalada en 1910 con motivo del primer centenario de la Independencia. A partir de esta pieza, y de su proceso de selección, encargo y realización, es posible vislumbrar la situación de la escultura colombiana a fines del siglo XIX y principios del XX, sobre todo en lo que se refiere a los encargos para obras en espacio público.</string>
 </resources>

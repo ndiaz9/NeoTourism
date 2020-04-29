@@ -4,24 +4,23 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener, OnMapReadyCallback {
+
+    public static final String EXTRA_MESSAGE = "com.neotourism.MESSAGE";
 
     private GoogleMap mMap;
     private Marker mLapola;
@@ -39,7 +38,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         butobservar = (Button) findViewById(R.id.buttonObservar);
-        img = (ImageView) findViewById(R.id.imageView1);
+        img = (ImageView) findViewById(R.id.mainImage);
         txt = (TextView) findViewById(R.id.textView1);
         currentMarker = "";
     }
@@ -87,11 +86,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         String tag = (String) marker.getTag();
         if (tag.equals("Pola")){
             img.setImageResource(R.drawable.lapola);
-            txt.setText("La Pola");
+            txt.setText(getString(R.string.text_lapola));
         }
         else if(tag.equals("Bolivar")){
             img.setImageResource(R.drawable.templetebolivar);
-            txt.setText("Templete Bolívar");
+            txt.setText(getString(R.string.text_bolivar));
         }
     }
 
@@ -107,8 +106,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         }
     }
 
-    public void onClickObservar(View view){
-        Intent intent = new Intent(this, CamActivity.class);
+    public void onClickMasInfo(View view){
+        Intent intent = new Intent(this, DetailActivity.class);
+        String currentText = txt.getText().toString();
+        System.out.println(currentText);
+        intent.putExtra(EXTRA_MESSAGE,currentText);
         startActivity(intent);
     }
 }

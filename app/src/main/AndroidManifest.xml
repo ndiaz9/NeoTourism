@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CamActivity"></activity>
+
+        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".CamActivity" />
         <activity android:name=".IngresarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +43,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@
         android:scrollbars="vertical" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/mainImage"
         android:layout_width="match_parent"
         android:layout_height="238dp"
         android:layout_alignParentBottom="true"
@@ -33,8 +33,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:onClick="onClickObservar"
-        android:text="@string/button_observar"
+        android:onClick="onClickMasInfo"
+        android:text="@string/button_moreinfo"
         android:visibility="invisible" />
 
     <TextView
