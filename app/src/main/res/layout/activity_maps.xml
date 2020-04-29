@@ -68,4 +68,13 @@
         android:layout_marginTop="3dp"
         android:src="@drawable/thumbnail_ardillita2" />
 
+    <ImageButton
+        android:id="@+id/button"
+        android:layout_width="28dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/ic_menu"
+        android:onClick="onClickMenu"
+        />
 </RelativeLayout>

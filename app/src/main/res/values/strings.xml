@@ -3,5 +3,30 @@
     <string name="title_activity_maps">Map</string>
     <string name="button_observar">Observar</string>
     <string name="text_lapola">La Pola</string>
+    <string name="text_bolivar">Templete Bolívar</string>
     <string name="text_img">Image</string>
+    <string name="title_activity_places_list">PlacesList</string>
+    <string name="tab_text_1">Cerca a ti</string>
+    <string name="tab_text_2">Recomendados</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="cerca_a_ti">Cerca a ti</string>
+    <string name="recomendados">Te recomendamos</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
