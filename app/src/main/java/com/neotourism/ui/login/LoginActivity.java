@@ -118,6 +118,10 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
                 Intent mapa = new Intent(LoginActivity.this, MapsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("email", usernameEditText.getText().toString());
+                bundle.putString("password",passwordEditText.getText().toString());
+                mapa.putExtras(bundle);
                 startActivity(mapa);
             }
         });
