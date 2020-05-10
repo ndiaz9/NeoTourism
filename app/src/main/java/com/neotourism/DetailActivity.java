@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.unity3d.player.BuildConfig;
+import com.unity3d.player.UnityPlayerActivity;
+
 public class DetailActivity extends AppCompatActivity {
 
     private TextView titulo;
@@ -47,7 +50,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void onClickAR(View view){
-        Intent intent = new Intent(this, CamActivity.class);
+        Intent intent = new Intent(this, UnityPlayerActivity.class);
         startActivity(intent);
     }
 
