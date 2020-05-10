@@ -2,7 +2,6 @@ package com.neotourism.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,13 +17,12 @@ import com.neotourism.R;
 
 import java.util.ArrayList;
 
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ListaCercaATi#newInstance} factory method to
+ * Use the {@link Favoritos#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListaCercaATi extends Fragment {
+public class Favoritos extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,7 +36,7 @@ public class ListaCercaATi extends Fragment {
 
     ArrayList<Dato> listaPlaces;
 
-    public ListaCercaATi() {
+    public Favoritos() {
         // Required empty public constructor
     }
 
@@ -48,11 +46,11 @@ public class ListaCercaATi extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ListaCercaATi.
+     * @return A new instance of fragment Favoritos.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListaCercaATi newInstance(String param1, String param2) {
-        ListaCercaATi fragment = new ListaCercaATi();
+    public static Favoritos newInstance(String param1, String param2) {
+        Favoritos fragment = new Favoritos();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,7 +71,7 @@ public class ListaCercaATi extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista= inflater.inflate(R.layout.fragment_lista_cerca_a_ti, container, false);
+        View vista= inflater.inflate(R.layout.fragment_favoritos, container, false);
 
         buildRecycler(vista);
 
@@ -91,7 +89,7 @@ public class ListaCercaATi extends Fragment {
     }
 
     private void buildRecycler(View vista) {
-        recyclerPlaces = (RecyclerView) vista.findViewById(R.id.cercaATiView);
+        recyclerPlaces = (RecyclerView) vista.findViewById(R.id.favoritosView);
         recyclerPlaces.setLayoutManager(new LinearLayoutManager(getContext()));
         listaPlaces = new ArrayList<Dato>();
 

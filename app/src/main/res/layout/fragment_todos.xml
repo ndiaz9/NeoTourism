@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Recomendados">
+    tools:context=".fragments.Todos">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recomendadosView"
+        android:id="@+id/todosView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

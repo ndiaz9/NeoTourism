@@ -15,10 +15,6 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".PlacesList"
-            android:label="@string/title_activity_places_list"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CamActivity" />
         <activity android:name=".IngresarActivity">
             <intent-filter>
