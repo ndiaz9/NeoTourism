@@ -20,6 +20,7 @@
             android:label="@string/title_activity_places_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CamActivity" />
+        <activity android:name="com.unity3d.player.UnityPlayerActivity" />
         <activity android:name=".IngresarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
