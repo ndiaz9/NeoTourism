@@ -1,2 +1,2 @@
 rootProject.name='NeoTourism'
-include ':app', ':VuforiaWrapper', ':unityLibrary', ':launcher'
+include ':app', ':VuforiaWrapper', ':unityLibrary'
