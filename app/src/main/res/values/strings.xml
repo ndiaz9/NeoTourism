@@ -8,6 +8,7 @@
     <string name="text_desc">No hay una descripción disponible. Intentalo más tarde.</string>
     <string name="text_titulo">Sin título</string>
     <string name="desc_lapola">En Bogotá, en la Plazuela de Las Aguas (carrera 3a con calle 18), se encuentra una escultura de Policarpa Salavarrieta realizada por Dionisio Cortés. Fue instalada en 1910 con motivo del primer centenario de la Independencia. A partir de esta pieza, y de su proceso de selección, encargo y realización, es posible vislumbrar la situación de la escultura colombiana a fines del siglo XIX y principios del XX, sobre todo en lo que se refiere a los encargos para obras en espacio público.</string>
+    <string name="desc_bolivar">El 20 de julio de 1883, en honor al natalicio del libertador, se inauguró el Parque Centenario con este Templete diseñado por el arquitecto italiano Pietro Cantini. Con el pasar de los años el Parque Centenario desapareció debido a la transformación de la carrerra 10 realizada en los años 40. Por esta razón el Templete se trasladó a un separador de la Calle 26 con Carrera 7. Luego, en 1958, fue ubicado en el Parque de los Periodistas Gabriel García Márquez, en la carrera 3 con avenida Jiménez, sobre el Eje Ambiental, donde actualmente reposa.</string>
     <string name="title_activity_places_list">PlacesList</string>
     <string name="tab_text_1">Cerca a ti</string>
     <string name="tab_text_2">Recomendados</string>
@@ -32,5 +33,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="game_view_content_description">Game view</string>
+    <string name="descripcion">Descripción</string>
+    <string name="comentarios">Comentarios</string>
+    <string name="comentario_nodisp">Comentario no disponible.</string>
+    <string name="nombre_fill">Nombre</string>
 
 </resources>

@@ -1,29 +1,30 @@
 package com.neotourism;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.unity3d.player.BuildConfig;
+import com.neotourism.ui.AdapterComments;
+import com.neotourism.ui.AdapterImages;
 import com.unity3d.player.UnityPlayerActivity;
+import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
     private TextView titulo;
     private TextView descripcion;
-    private ImageView imgDetail1;
-    private ImageView imgDetail2;
-    private ImageView imgDetail3;
-    private ImageView imgDetail4;
-    private LinearLayout linearLayout;
+    private ArrayList<Integer> mImages = new ArrayList<>();
+    private ArrayList<Integer> mImagesUsers = new ArrayList<>();
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mComments = new ArrayList<>();
+    private ImageButton favButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +32,14 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         titulo = findViewById(R.id.textLugar);
         descripcion = findViewById(R.id.textDescripcion);
-        imgDetail1 = findViewById(R.id.imageDetail1);
-        imgDetail2 = findViewById(R.id.imageDetail2);
-        imgDetail3 = findViewById(R.id.imageDetail3);
-        imgDetail4 = findViewById(R.id.imageDetail4);
-        linearLayout = findViewById(R.id.linearLayout);
-
-        int width = getScreenWidth(DetailActivity.this);
-        int childCount=linearLayout.getChildCount();
-        for (int i=0;i<childCount;i++){
-            ImageView imageView= (ImageView) linearLayout.getChildAt(i);
-            imageView.setMinimumWidth(width);
-            imageView.setMaxWidth(width);
-        }
-
+        favButton = findViewById(R.id.favButton);
+        favButton.setTag(new Integer(0));
         String currentText = getIntent().getStringExtra(MapsActivity.EXTRA_MESSAGE);
         setResources(currentText);
+        getImages(currentText);
+        getComments();
+        initRecyclerView();
+        initRecyclerViewComments();
     }
 
     public void onClickAR(View view){
@@ -54,21 +47,84 @@ public class DetailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickFav(View view){
+        Integer currentState = (Integer) favButton.getTag();
+        if(currentState == 0){
+            favButton.setTag(new Integer(1));
+            favButton.setBackgroundResource(R.drawable.ic_star_black_24dp);
+        }
+        else{
+            favButton.setTag(new Integer(0));
+            favButton.setBackgroundResource(R.drawable.ic_star_border_black_24dp);
+        }
+    }
+
     public void setResources(String currentText){
         if(currentText.equals(getString(R.string.text_lapola))){
             titulo.setText(R.string.text_lapola);
             descripcion.setText(R.string.desc_lapola);
-            imgDetail1.setImageResource(R.drawable.lapola1mini);
-            imgDetail2.setImageResource(R.drawable.lapola2mini);
-            imgDetail3.setImageResource(R.drawable.lapola3mini);
-            imgDetail4.setImageResource(R.drawable.lapola4mini);
+        }
+        else if(currentText.equals(getString(R.string.text_bolivar))){
+            titulo.setText(R.string.text_bolivar);
+            descripcion.setText(R.string.desc_bolivar);
         }
     }
-    public static int getScreenWidth(Context context) {
-        WindowManager windowManager = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics dm = new DisplayMetrics();
-        windowManager.getDefaultDisplay().getMetrics(dm);
-        return dm.widthPixels;
+    public void getImages(String currentText){
+        if(currentText.equals(getString(R.string.text_lapola))){
+            mImages.add(R.drawable.lapola1mini);
+            mImages.add(R.drawable.lapola2mini);
+            mImages.add(R.drawable.lapola3mini);
+            mImages.add(R.drawable.lapola4mini);
+        }
+        else if(currentText.equals(getString(R.string.text_bolivar))){
+            mImages.add(R.drawable.bolivar1);
+            mImages.add(R.drawable.bolivar2);
+            mImages.add(R.drawable.bolivar3);
+            mImages.add(R.drawable.bolivar4);
+        }
+    }
+    public void getComments(){
+        mImagesUsers.add(R.drawable.lapola1mini);
+        mImagesUsers.add(R.drawable.lapola2mini);
+        mImagesUsers.add(R.drawable.lapola3mini);
+        mImagesUsers.add(R.drawable.lapola4mini);
+        mImagesUsers.add(R.drawable.lapola1mini);
+        mImagesUsers.add(R.drawable.lapola2mini);
+        mImagesUsers.add(R.drawable.lapola3mini);
+        mImagesUsers.add(R.drawable.lapola4mini);
+
+        mNames.add("Roberto Séneca");
+        mNames.add("Adriana Quijano");
+        mNames.add("Federico López");
+        mNames.add("Ana María Forero");
+        mNames.add("Roberto Séneca");
+        mNames.add("Adriana Quijano");
+        mNames.add("Federico López");
+        mNames.add("Ana María Forero");
+
+        mComments.add("Me gusta mucho este lugar.");
+        mComments.add("Perfecto para pasar la tarde.");
+        mComments.add("Me encanta el ambiente.");
+        mComments.add("Muy bonito.");
+        mComments.add("Me gusta mucho este lugar.");
+        mComments.add("Perfecto para pasar la tarde.");
+        mComments.add("Me encanta el ambiente.");
+        mComments.add("Muy bonito.");
+    }
+    private void initRecyclerView(){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(layoutManager);
+        AdapterImages adapter = new AdapterImages(this,mImages);
+        SnapHelper helper = new LinearSnapHelper();
+        recyclerView.setAdapter(adapter);
+        helper.attachToRecyclerView(recyclerView);
+    }
+    private void initRecyclerViewComments(){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewComm);
+        recyclerView.setLayoutManager(layoutManager);
+        AdapterComments adapter = new AdapterComments(this,mImagesUsers,mNames,mComments);
+        recyclerView.setAdapter(adapter);
     }
 }
