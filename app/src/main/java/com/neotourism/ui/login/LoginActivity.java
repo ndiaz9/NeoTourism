@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.neotourism.MapsActivity;
 import com.neotourism.R;
 import com.neotourism.ui.login.LoginViewModel;
 import com.neotourism.ui.login.LoginViewModelFactory;
@@ -115,6 +117,8 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+                Intent mapa = new Intent(LoginActivity.this, MapsActivity.class);
+                startActivity(mapa);
             }
         });
     }
