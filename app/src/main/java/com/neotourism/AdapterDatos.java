@@ -7,16 +7,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> implements View.OnClickListener {
 
-    ArrayList<Dato> listDatos;
+    List<Dato> listDatos;
     private View.OnClickListener listener;
 
-    public AdapterDatos(ArrayList<Dato> listDatos) {
+    public AdapterDatos(List<Dato> listDatos) {
         this.listDatos = listDatos;
     }
 

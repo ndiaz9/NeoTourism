@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private Bundle userInfo;
     private List<String> interests;
+    private List<Dato> todos;
+    private List<Dato> favoritos;
+    private List<Dato> recomendados;
+    private List<Dato> cercaATi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
         // inicialize lists
         interests = new ArrayList<>();
+        todos = new ArrayList<>();
+        favoritos = new ArrayList<>();
+        recomendados = new ArrayList<>();
+        cercaATi = new ArrayList<>();
     }
 
     @Override
@@ -90,8 +98,49 @@ public class MainActivity extends AppCompatActivity {
         userInfo.putString("password", password);
     }
 
-    public void addInterest(String interest) {
+    public List<Dato> getTodos() {return todos;}
 
+    public void addTodos(Dato place) {todos.add(place);}
+
+    public List<Dato> getRecomendados() {return recomendados;}
+
+    public List<Dato> getCercaATi() {return cercaATi;}
+
+    public List<Dato> getFavoritos() {return favoritos;}
+
+    public void addFavorito(Dato place) {favoritos.add(place);}
+
+    public void removeFavorito(Dato place) {favoritos.remove(place);}
+
+    public List<String> getInterests() {return interests;}
+
+    public void addInterest(String interest) {
+        interests.add(interest);
+        for (Dato place: todos) {
+            for (String tag: place.getTags()) {
+                if (tag.equals(interest)) {
+                    recomendados.add(place);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void removeInterest(String interest) {
+        interests.remove(interest);
+        for (Dato place: recomendados) {
+            boolean remove = true;
+            for (String tag: place.getTags()) {
+                for (String interes: interests) {
+                    if(tag.equals(interes)) {
+                        remove = false;
+                        break;
+                    }
+                }
+                if (!remove) break;
+            }
+            if (remove) recomendados.remove(place);
+        }
     }
 
     public void logout() {

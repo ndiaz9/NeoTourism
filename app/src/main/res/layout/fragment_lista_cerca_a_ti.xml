@@ -6,6 +6,14 @@
     tools:context=".fragments.ListaCercaATi"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textNoPlaces"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="No hay lugares de interés turístico en un radio de 1km de ti" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cercaATiView"
         android:layout_width="match_parent"
