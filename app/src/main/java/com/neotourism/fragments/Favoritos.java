@@ -9,13 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.neotourism.AdapterDatos;
 import com.neotourism.Dato;
+import com.neotourism.MainActivity;
 import com.neotourism.MapsActivity;
 import com.neotourism.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +37,7 @@ public class Favoritos extends Fragment {
 
     RecyclerView recyclerPlaces;
 
-    ArrayList<Dato> listaPlaces;
+    List<Dato> listaPlaces;
 
     public Favoritos() {
         // Required empty public constructor
@@ -75,17 +78,19 @@ public class Favoritos extends Fragment {
 
         buildRecycler(vista);
 
+        TextView noHay = vista.findViewById(R.id.textNoPlaces);
+        if (listaPlaces.isEmpty()) {
+            noHay.setVisibility(View.VISIBLE);
+        } else {
+            noHay.setVisibility(View.GONE);
+        }
+
         return vista;
     }
 
     private void llenarLista() {
         //TODO please llena esto con los datos manuales
-        ArrayList<String> tagsTemp = new ArrayList<>();
-        tagsTemp.add("Historia");
-        tagsTemp.add("Independencia");
-
-        listaPlaces.add(new Dato("La Pola", 100, tagsTemp, R.drawable.lapolaredonda));
-        listaPlaces.add(new Dato("Templete Bolívar", 200, tagsTemp, R.drawable.bolivarredondo));
+        listaPlaces = ((MainActivity) getActivity()).getFavoritos();
     }
 
     private void buildRecycler(View vista) {
