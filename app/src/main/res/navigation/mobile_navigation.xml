@@ -43,13 +43,13 @@
 
     <fragment
         android:id="@id/nav_preferencias"
-        android:name="com.neotourism.ui.slideshow.SlideshowFragment"
+        android:name="com.neotourism.FragmentIntereses"
         android:label=" "
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_intereses" />
 
     <fragment
         android:id="@id/nav_mi_cuenta"
-        android:name="com.neotourism.ui.slideshow.SlideshowFragment"
+        android:name="com.neotourism.fragments.MiCuenta"
         android:label=" "
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_mi_cuenta" />
 </navigation>

@@ -116,6 +116,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     public void onClickMenu(View view){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtras(getIntent().getExtras());
         startActivity(intent);
     }
 }
