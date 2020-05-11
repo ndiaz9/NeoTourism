@@ -55,8 +55,6 @@ public class DetailActivity extends AppCompatActivity {
             favButton.setTag(new Integer(0));
             favButton.setBackgroundResource(R.drawable.ic_star_border_black_24dp);
         }
-        Intent intent = new Intent(this, PreferenciasActivity.class);
-        startActivity(intent);
     }
 
     public void setResources(String currentText){
