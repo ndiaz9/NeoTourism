@@ -14,10 +14,8 @@ import android.view.ViewGroup;
 import com.neotourism.AdapterDatos;
 import com.neotourism.Dato;
 import com.neotourism.MapsActivity;
-import com.neotourism.PlacesList;
 import com.neotourism.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 

@@ -66,24 +66,34 @@ public class ContenedorPlacesFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_contenedor_places, container, false);
-    }
+        view = inflater.inflate(R.layout.fragment_contenedor_places, container, false);
 
-    //@Override
-    //public void onViewCreated(View view, Bundle savedInstanceState) {
-    //    TabLayout tabLayout = view.findViewById(R.id.);
-    //  tabLayout.setupWithViewPager(viewPager);
-    //}
+        viewPager = view.findViewById(R.id.view_pager);
+        fillViewPager(viewPager);
+        TabLayout tabs = view.findViewById(R.id.tabs);
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+        });
+        tabs.setupWithViewPager(viewPager);
+        return view;
+    }
 
 
     private void fillViewPager(ViewPager viewPager) {
         AdapterTabs adapter = new AdapterTabs(getFragmentManager());
-        adapter.addFragment(new ListaCercaATi(), "Cerca a ti");
         adapter.addFragment(new Recomendados(), "Recomendados");
+        adapter.addFragment(new Todos(), "Todos");
 
         viewPager.setAdapter(adapter);
     }

@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_cerca_a_ti">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.neotourism.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home">
+        android:id="@id/nav_cerca_a_ti"
+        android:name="com.neotourism.fragments.ListaCercaATi"
+        android:label=" "
+        tools:layout="@layout/fragment_lista_cerca_a_ti">
 
         <action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_home_second">
         <action
             android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
+            app:destination="@id/nav_cerca_a_ti" />
 
         <argument
             android:name="myArg"
@@ -30,14 +30,26 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@id/nav_otrosLugares"
         android:name="com.neotourism.fragments.ContenedorPlacesFragment"
-        android:label="@string/menu_gallery"
+        android:label=" "
         tools:layout="@layout/fragment_contenedor_places" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@id/nav_favoritos"
+        android:name="com.neotourism.fragments.Favoritos"
+        android:label=" "
+        tools:layout="@layout/fragment_favoritos" />
+
+    <fragment
+        android:id="@id/nav_preferencias"
         android:name="com.neotourism.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label=" "
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@id/nav_mi_cuenta"
+        android:name="com.neotourism.ui.slideshow.SlideshowFragment"
+        android:label=" "
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
