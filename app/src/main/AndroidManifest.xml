@@ -16,6 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".PreferenciasActivity"></activity>
+        <activity
+            android:name=".Registro"
+            android:label="@string/title_activity_registro"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
         <activity android:name=".DetailActivity" />
         <activity
             android:name=".MainActivity"
@@ -49,10 +56,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>

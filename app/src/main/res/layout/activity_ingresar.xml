@@ -12,12 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="6dp"
-        app:srcCompat="@drawable/logo"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="-10dp"
+        app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/btnIniciar"
@@ -25,10 +25,23 @@
         android:layout_height="61dp"
         android:layout_below="@+id/imageView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
-        android:background="@color/darkerPurple"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
         android:onClick="onClick"
-        android:text="Iniciar"
+        android:text="Iniciar Sesión"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        />
+
+    <Button
+        android:id="@+id/btnRegistro"
+        android:layout_below="@+id/btnIniciar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_width="302dp"
+        android:layout_height="61dp"
+        android:background="@drawable/registrarse_background"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="Registrarse" />
 </RelativeLayout>

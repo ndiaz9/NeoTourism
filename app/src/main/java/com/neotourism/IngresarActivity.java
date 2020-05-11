@@ -12,24 +12,44 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.neotourism.ui.login.LoginActivity;
+
 public class IngresarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingresar);
-        Button boton = (Button) findViewById(R.id.btnIniciar);
+        Button btnIngresar = (Button) findViewById(R.id.btnIniciar);
+        Button btnRegistro = (Button) findViewById(R.id.btnRegistro);
+        btnIngresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent login = new Intent(IngresarActivity.this, LoginActivity.class);
+                startActivity(login);
+            }
+        });
+        btnRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registro = new Intent(IngresarActivity.this, Registro.class);
+                startActivity(registro);
+            }
+        });
+
+
     }
 
     public void onClick(View v)
     {
+        /**
         if (ContextCompat.checkSelfPermission(IngresarActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             // No explanation needed; request the permission
             ActivityCompat.requestPermissions(IngresarActivity.this, new String[]{Manifest.permission.CAMERA},1);
         }else {
             Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
-        }
+        }**/
     }
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
