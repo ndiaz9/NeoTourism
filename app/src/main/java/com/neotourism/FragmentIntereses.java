@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
 import java.util.ArrayList;
 
 /**
@@ -29,6 +32,10 @@ public class FragmentIntereses extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_intereses, container, false);
+        Spinner spinner = rootView.findViewById(R.id.spinnerIdioma);
+        ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(rootView.getContext(),R.array.idiomas_array,android.R.layout.simple_spinner_item);
+        adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapterSpinner);
         getPreferencias();
         GridLayoutManager layoutManager = new GridLayoutManager(this.getActivity(),2);
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerViewPref);
