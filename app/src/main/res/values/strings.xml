@@ -37,5 +37,12 @@
     <string name="comentarios">Comentarios</string>
     <string name="comentario_nodisp">Comentario no disponible.</string>
     <string name="nombre_fill">Nombre</string>
-
+    <string name="idioma">Idioma</string>
+    <string name="preferencias">Preferencias</string>
+    <string name="interes">Interés</string>
+    <string name="tusintereses">Tus Intereses</string>
+    
+    <string-array name="idiomas_array">
+        <item>Español</item>
+    </string-array>
 </resources>

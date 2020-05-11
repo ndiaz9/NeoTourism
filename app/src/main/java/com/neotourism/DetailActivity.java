@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.neotourism.ui.AdapterComments;
-import com.neotourism.ui.AdapterImages;
 import com.unity3d.player.UnityPlayerActivity;
 import java.util.ArrayList;
 
@@ -57,6 +55,8 @@ public class DetailActivity extends AppCompatActivity {
             favButton.setTag(new Integer(0));
             favButton.setBackgroundResource(R.drawable.ic_star_border_black_24dp);
         }
+        Intent intent = new Intent(this, PreferenciasActivity.class);
+        startActivity(intent);
     }
 
     public void setResources(String currentText){

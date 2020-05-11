@@ -1,4 +1,4 @@
-package com.neotourism.ui;
+package com.neotourism;
 
 import android.content.Context;
 import android.view.View;
@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.neotourism.R;
 
 import java.util.ArrayList;
 
