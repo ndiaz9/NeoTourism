@@ -21,6 +21,7 @@ public class IngresarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingresar);
         Button btnIngresar = (Button) findViewById(R.id.btnIniciar);
+        Button btnRegistro = (Button) findViewById(R.id.btnRegistro);
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +29,14 @@ public class IngresarActivity extends AppCompatActivity {
                 startActivity(login);
             }
         });
+        btnRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registro = new Intent(IngresarActivity.this, Registro.class);
+                startActivity(registro);
+            }
+        });
+
 
     }
 

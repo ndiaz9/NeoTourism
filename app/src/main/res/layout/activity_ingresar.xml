@@ -34,7 +34,7 @@
         />
 
     <Button
-        android:id="@+id/btnRegistrarse"
+        android:id="@+id/btnRegistro"
         android:layout_below="@+id/btnIniciar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
