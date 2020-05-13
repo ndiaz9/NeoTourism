@@ -7,10 +7,12 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.navigation.NavigationView;
 import com.neotourism.fragments.ContenedorPlacesFragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -29,10 +31,43 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private Bundle userInfo;
     private List<String> interests;
-    private List<Dato> todos;
     private List<Dato> favoritos;
     private List<Dato> recomendados;
     private List<Dato> cercaATi;
+
+    private static final int CANTIDAD_LUGARES = 2;
+    private LatLng latLngAct;
+    private LatLng[] latLngs = {
+            new LatLng(4.601639, -74.067687),
+            new LatLng(4.601211, -74.069221)
+    };
+
+    private List<Dato> todos = new ArrayList<>(
+            Arrays.asList(
+                    new Dato(
+                            "La Pola",
+                            0,
+                            new ArrayList<String>(
+                                    Arrays.asList(
+                                            "Historia",
+                                            "Independencia"
+                                    )
+                            ),
+                            R.drawable.lapolaredonda
+                    ),
+                    new Dato(
+                            "Templete Bolívar",
+                            0,
+                            new ArrayList<String>(
+                                    Arrays.asList(
+                                            "Historia",
+                                            "Independencia"
+                                    )
+                            ),
+                            R.drawable.bolivarredondo
+                    )
+            )
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
 
         // inicialize lists
         interests = new ArrayList<>();
-        todos = new ArrayList<>();
         favoritos = new ArrayList<>();
         recomendados = new ArrayList<>();
         cercaATi = new ArrayList<>();
+        addTodos();
 
 
         if (getIntent().getExtras().containsKey(MapsActivity.EXTRA_MESSAGE)) {
@@ -116,7 +151,11 @@ public class MainActivity extends AppCompatActivity {
 
     public List<Dato> getTodos() {return todos;}
 
-    public void addTodos(Dato place) {todos.add(place);}
+    public void addTodos() {
+        for (int i = 0; i < CANTIDAD_LUGARES; i++) {
+            todos.get(i).setDistancia(calcularDistancia(latLngs[i]));
+        };
+    }
 
     public List<Dato> getRecomendados() {return recomendados;}
 
@@ -162,5 +201,9 @@ public class MainActivity extends AppCompatActivity {
     public void logout() {
         Intent intent = new Intent(this, IngresarActivity.class);
         startActivity(intent);
+    }
+
+    private int calcularDistancia(LatLng latLng) {
+        return 100;
     }
 }

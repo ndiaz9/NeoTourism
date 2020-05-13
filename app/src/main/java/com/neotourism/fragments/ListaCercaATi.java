@@ -106,8 +106,12 @@ public class ListaCercaATi extends Fragment {
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String nombre = listaPlaces.get(recyclerPlaces.getChildAdapterPosition(view)).getNombre();
+
                 Intent intent = new Intent(getContext(), MapsActivity.class);
-                intent.putExtras(((MainActivity)getActivity()).getUserInfo());
+                Bundle b = ((MainActivity)getActivity()).getUserInfo();
+                b.putString(getString(R.string.arg_show_place), nombre);
+                intent.putExtras(b);
                 startActivity(intent);
             }
         });

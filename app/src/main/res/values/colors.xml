@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="purple">#844af3</color>
     <color name="white">#ffffff</color>
+    <color name="whiteTransparent">#98FFFFFF</color>
     <color name="darkerPurple">#6115f3</color>
     <color name="lightBlue">#A8CCE8</color>
     <color name="darkBlue">#438EC8</color>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.neotourism.AdapterDatos;
 import com.neotourism.Dato;
@@ -78,17 +79,6 @@ public class Todos extends Fragment {
 
     private void llenarLista() {
         //TODO please llena esto con los datos manuales
-
-        if(((MainActivity)getActivity()).getTodos().isEmpty()) {
-            ArrayList<String> tagsTemp = new ArrayList<>();
-            tagsTemp.add("Historia");
-            tagsTemp.add("Independencia");
-
-            ((MainActivity)getActivity()).addTodos(new Dato("La Pola", 100, tagsTemp, R.drawable.lapolaredonda));
-            ((MainActivity)getActivity()).addTodos(new Dato("Templete Bolívar", 200, tagsTemp, R.drawable.bolivarredondo));
-        }
-
-
         listaPlaces = ((MainActivity)getActivity()).getTodos();
     }
 
@@ -104,8 +94,12 @@ public class Todos extends Fragment {
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String nombre = listaPlaces.get(recyclerPlaces.getChildAdapterPosition(view)).getNombre();
+
                 Intent intent = new Intent(getContext(), MapsActivity.class);
-                intent.putExtras(((MainActivity)getActivity()).getUserInfo());
+                Bundle b = ((MainActivity)getActivity()).getUserInfo();
+                b.putString(getString(R.string.arg_show_place), nombre);
+                intent.putExtras(b);
                 startActivity(intent);
             }
         });
