@@ -108,6 +108,7 @@ public class Recomendados extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), MapsActivity.class);
+                intent.putExtras(((MainActivity)getActivity()).getUserInfo());
                 startActivity(intent);
             }
         });

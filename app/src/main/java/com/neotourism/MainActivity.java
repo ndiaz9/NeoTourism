@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         userInfo = getIntent().getExtras();
 
+
         // set username
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = (TextView) headerView.findViewById(R.id.nav_header_name);
@@ -68,6 +69,21 @@ public class MainActivity extends AppCompatActivity {
         favoritos = new ArrayList<>();
         recomendados = new ArrayList<>();
         cercaATi = new ArrayList<>();
+
+
+        if (getIntent().getExtras().containsKey(MapsActivity.EXTRA_MESSAGE)) {
+            String name = getIntent().getStringExtra(MapsActivity.EXTRA_MESSAGE);
+            Dato seleccionado = null;
+            ArrayList<String> tagsTemp = new ArrayList<>();
+            tagsTemp.add("Historia");
+            tagsTemp.add("Independencia");
+            if(name.equals(getString(R.string.text_lapola))) {
+                favoritos.add(new Dato("La Pola", 100, tagsTemp, R.drawable.lapolaredonda));
+            } else {
+                favoritos.add(new Dato("Templete Bolívar", 200, tagsTemp, R.drawable.bolivarredondo));
+            }
+
+        }
     }
 
     @Override

@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 
 import com.neotourism.AdapterDatos;
 import com.neotourism.Dato;
+import com.neotourism.MainActivity;
 import com.neotourism.MapsActivity;
 import com.neotourism.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,7 +32,7 @@ public class Todos extends Fragment {
 
     RecyclerView recyclerPlaces;
 
-    ArrayList<Dato> listaPlaces;
+    List<Dato> listaPlaces;
 
     public Todos() {
         // Required empty public constructor
@@ -76,12 +78,18 @@ public class Todos extends Fragment {
 
     private void llenarLista() {
         //TODO please llena esto con los datos manuales
-        ArrayList<String> tagsTemp = new ArrayList<>();
-        tagsTemp.add("Historia");
-        tagsTemp.add("Independencia");
 
-        listaPlaces.add(new Dato("La Pola", 100, tagsTemp, R.drawable.lapolaredonda));
-        listaPlaces.add(new Dato("Templete Bolívar", 200, tagsTemp, R.drawable.bolivarredondo));
+        if(((MainActivity)getActivity()).getTodos().isEmpty()) {
+            ArrayList<String> tagsTemp = new ArrayList<>();
+            tagsTemp.add("Historia");
+            tagsTemp.add("Independencia");
+
+            ((MainActivity)getActivity()).addTodos(new Dato("La Pola", 100, tagsTemp, R.drawable.lapolaredonda));
+            ((MainActivity)getActivity()).addTodos(new Dato("Templete Bolívar", 200, tagsTemp, R.drawable.bolivarredondo));
+        }
+
+
+        listaPlaces = ((MainActivity)getActivity()).getTodos();
     }
 
     private void buildRecycler(View vista) {
@@ -97,6 +105,7 @@ public class Todos extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), MapsActivity.class);
+                intent.putExtras(((MainActivity)getActivity()).getUserInfo());
                 startActivity(intent);
             }
         });

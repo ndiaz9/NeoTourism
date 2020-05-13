@@ -110,7 +110,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         Intent intent = new Intent(this, DetailActivity.class);
         String currentText = txt.getText().toString();
         System.out.println(currentText);
-        intent.putExtra(EXTRA_MESSAGE,currentText);
+        Bundle b = getIntent().getExtras();
+        b.putString(EXTRA_MESSAGE,currentText);
+        intent.putExtras(b);
         startActivity(intent);
     }
 

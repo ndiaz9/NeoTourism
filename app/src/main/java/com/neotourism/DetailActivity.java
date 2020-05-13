@@ -125,4 +125,11 @@ public class DetailActivity extends AppCompatActivity {
         AdapterComments adapter = new AdapterComments(this,mImagesUsers,mNames,mComments);
         recyclerView.setAdapter(adapter);
     }
+
+    public void onClickBack(View view){
+        Intent intent = new Intent(this, MapsActivity.class);
+        String currentText = getIntent().getStringExtra(MapsActivity.EXTRA_MESSAGE);
+        intent.putExtras(getIntent().getExtras());
+        startActivity(intent);
+    }
 }
